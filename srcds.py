@@ -16,17 +16,17 @@ processes=[]
 
 def ReadConf():
     
-    #Test for config file
+    #Read file into ConfigParser
     try:
         config = open(config_file, 'r')
+        config = ConfigParser.SafeConfigParser()
+        config = ConfigParser.SafeConfigParser()
+        config.read(config_file)
     except IOError:
         print 'cannot open', config_file
     else:
         if _debug: print "Found Config File (" + config_file + ")"
     
-    #Read file into ConfigParser
-    config = ConfigParser.SafeConfigParser()
-    config.read(config_file)
     
     #Load default variables
     default_items = dict(config.items("DEFAULT"))
