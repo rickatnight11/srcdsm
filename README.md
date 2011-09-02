@@ -1,21 +1,21 @@
-Source Dedicated Server Manager (*srcdsm*)
+Source Dedicated Server Manager (**srcdsm**)
 =======================================
 
-*srcdsm* can deploy, track, and manage any number of instances of
-*srcds*-based games.  It easily scales from single-deployment to
+**srcdsm** can deploy, track, and manage any number of instances of
+**srcds**-based games.  It easily scales from single-deployment to
 multi-deployment environments and supports many deployment
 configurations.
 
 Features
 --------
 
-*srcdsm* provides the following features:
+**srcdsm** provides the following features:
 
-* Install and manage multiple instances of *srcds*-based games
-* Deploy *srcds* installations in any method
-	* Single-deployment environments (all games are installed into one *srcds* deployment)
-	* Multi-deployment environments (each game is installed into a separate *srcds* deployment)
-	* Dynamic-deployment environments (multiple *srcds* deployments, each with one or more games installed) 
+** Install and manage multiple instances of **srcds**-based games
+** Deploy **srcds** installations in any method
+	** Single-deployment environments (all games are installed into one **srcds** deployment)
+	** Multi-deployment environments (each game is installed into a separate **srcds** deployment)
+	** Dynamic-deployment environments (multiple **srcds** deployments, each with one or more games installed) 
 
 
 Components
@@ -29,32 +29,32 @@ so requirements and configuration are highly subject to change
 
 The main script that performs all tasks including:
 
-* Deploy *srcds* installations
-* Install games into *srcds* deployments
-* Read/Save Deployment Configuration
-* Start/Stop/Track Game Instances
+** Deploy **srcds** installations
+** Install games into **srcds** deployments
+** Read/Save Deployment Configuration
+** Start/Stop/Track Game Instances
 
 ### srcdsm.conf
 
-The configuation file that stores *srcdsm* settings and defaults.  This
+The configuation file that stores **srcdsm** settings and defaults.  This
 configuration file can be edited manually, but ideally the main script
 (srcds.py) should be used.
 
 ### deployments.conf
 
-The configuration file that stores a list of deployed *srcds* installations
+The configuration file that stores a list of deployed **srcds** installations
 and their settings.
 
 ### Gametype Config Files
 
-Each supported *srcds*-based game has a config file containing all relevant
+Each supported **srcds**-based game has a config file containing all relevant
 settings and defaults.
 
 
 Installation
 -----------
 
-At this time there are no installation instructions, as *srcdsm* consists of
+At this time there are no installation instructions, as **srcdsm** consists of
 only the script and configuration files.  Once the script becomes more robust,
 OS-specific distributions will be developed.
 
@@ -62,14 +62,14 @@ OS-specific distributions will be developed.
 Basic Usage
 -----------
 
-### Deploy *srcds*
+### Deploy **srcds**
 
-Deploy a new installation of *srcds* with the --deploy switch:
+Deploy a new installation of **srcds** with the --deploy switch:
 
 	srcdsm.py --deploy [INSTALLATION_NAME] [INSTALLATION_PATH]
 
 The script will prompt for the any options not supplied and without
-defaults in the *srcdsm* config depending on the verbosity level.
+defaults in the **srcdsm** config depending on the verbosity level.
 
 ### Install Game
 
