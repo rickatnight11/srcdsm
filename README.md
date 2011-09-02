@@ -11,11 +11,11 @@ Features
 
 **srcdsm** provides the following features:
 
-** Install and manage multiple instances of **srcds**-based games
-** Deploy **srcds** installations in any method
-	** Single-deployment environments (all games are installed into one **srcds** deployment)
-	** Multi-deployment environments (each game is installed into a separate **srcds** deployment)
-	** Dynamic-deployment environments (multiple **srcds** deployments, each with one or more games installed) 
+* Install and manage multiple instances of **srcds**-based games
+* Deploy **srcds** installations in any method
+	* Single-deployment environments (all games are installed into one **srcds** deployment)
+	* Multi-deployment environments (each game is installed into a separate **srcds** deployment)
+	* Dynamic-deployment environments (multiple **srcds** deployments, each with one or more games installed) 
 
 
 Components
@@ -29,10 +29,10 @@ so requirements and configuration are highly subject to change
 
 The main script that performs all tasks including:
 
-** Deploy **srcds** installations
-** Install games into **srcds** deployments
-** Read/Save Deployment Configuration
-** Start/Stop/Track Game Instances
+* Deploy **srcds** installations
+* Install games into **srcds** deployments
+* Read/Save Deployment Configuration
+* Start/Stop/Track Game Instances
 
 ### srcdsm.conf
 
