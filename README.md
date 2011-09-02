@@ -1,127 +1,111 @@
-SRCDS Server Manager
-====================
+Source Dedicated Server Manager (srcdsm)
+=======================================
 
-Source Dedicated Server (SRCDS) Server Manager can deploy, track, and manage any
-number of instances of SRCDS-based games.  It easily scales from single-deployment
-to multi-deployment environments and supports any deployment configuration.
+srcdsm can deploy, track, and manage any number of instances of
+srcds-based games.  It easily scales from single-deployment to
+multi-deployment environments and supports many deployment
+configurations.
 
 Features
 --------
 
-SRCDS Server Manager contains the following features:
+srcdsm provides the following features:
 
-* Install and manage multiple instances of SRCDS-based games
-* Deploy SRCDS installations in any method
-	* Single-deployment environments (all games are installed into one SRCDS deployment)
-	* Multi-deployment environments (each game is installed into a separate SRCDS deployment)
-	* Dynamic-deployment environments (multiple SRCDS deployments, each with one or more games installed) 
+* Install and manage multiple instances of srcds-based games
+* Deploy srcds installations in any method
+	* Single-deployment environments (all games are installed into one srcds deployment)
+	* Multi-deployment environments (each game is installed into a separate srcds deployment)
+	* Dynamic-deployment environments (multiple srcds deployments, each with one or more games installed) 
 
 
 Components
 ------------
 
-This application is currently under initial development, so requirements and configuration is highly subject to change
+This application is currently under initial development,
+so requirements and configuration are highly subject to change
 
 
-### srcds.py
+### srcdsm.py
 
-This is the main script that performs all tasks including
+The main script that performs all tasks including:
 
-* Deploy SRCDS
-* Install games into SRCDS deployments
+* Deploy srcds installations
+* Install games into srcds deployments
 * Read/Save Deployment Configuration
 * Start/Stop/Track Game Instances
 
-### srcds.conf
+### srcdsm.conf
 
-This is the configuration file that stores both SRCDS game profiles
-and deployment/game profiles. This configuration file can be edited manually,
-but ideally the main script (srcds.py) should be used.
+The configuation file that stores srcdsm settings and defaults.  This
+configuration file can be edited manually, but ideally the main script
+(srcds.py) should be used.
+
+### deployments.conf
+
+The configuration file that stores a list of deployed srcds installations
+and their settings.
+
+### Gametype Config Files
+
+Each supported srcds-based game has a config file containing all relevant
+settings and defaults.
 
 
 Installation
 -----------
 
 At this time there are no installation instructions, as the SRCDS Server Manager
-consists of only the script and configuration file.  Once the application becomes more robust,
-custom deployments per OS distributions will be developed.
+consists of only the script and configuration files.  Once the script becomes more
+robust, OS-specific distributions will be developed.
 
 
-Usage
------
+Basic Usage
+-----------
 
 ### Deploy SRCDS
 
-To deploy a new installation of SRCDS run use the --deploy switch.  This can be used in several ways:
+Deploy a new installation of srcds with the --deploy switch:
 
-	srcds.py --deploy
-	
-This is the minimum amount of syntax required to deploy a new installation of SRCDS.  The script will prompt
-for the name and location of the new deployment.
+	srcds.py --deploy [INSTALLATION_NAME] [INSTALLATION_PATH]
 
-	srcds.py --deploy srcds1
-	
-If srcds1 is not the name of a currently deployed SRCDS installation, this syntax will deploy a new SRCDS
-installation called srcds1 into the current directory.
-
-	srcds.py --deploy srcds1 /path/to/srcds1
-	
-If srcds1 is not the name of a currently deployed SRCDS installation, this syntax will deploy a new SRCDS
-installation called srcds1 into the path provided.
-
+The script will prompt for the any options not supplied and without
+defaults in the srcdsm config depending on the verbosity level.
 
 ### Install Game
 
-To install a new instance of a game, use the --install switch.  This can be used in several ways:
+Install a new instance of a game with the --install switch:
 
-	srcds.py --install
+	srcds.py --install [GAMETYPE] [INSTALLATION_NAME]
 
-This is the minimum amount of syntax required to install a new game.  This script will prompt for the
-game-type and SRCDS deployment to install the game into.
-
-	srcds.py --install cstrike
-	
-If this command is run while inside a known SRCDS deployment, the script will install a new instance of
-Counter-Strike (or whatever game-type is specified) into that deployment.  Otherwise the script will prompt
-for the SRCDS deployment to install an instance of the supplied game-type into.
-
-	srcds.py --install cstrike srcds1
-	
-If srcds1 is a known SRCDS deployment name, the script will install a new instance of Counter-Strike
-(or whatever game-type is specified) into that deployment.
-
-	srcds.py --install cstrike /path/to/srcds1
-	
-If the provided path is a known SRCDS deployment, the script will install a new instance of Counter-Strike
-(or whatever game-type is specified) into that deployment.
+The script will prompt for the any options not supplied depending on
+the verbosity level.
 
 ### Start a Game
 
-To start a game, use the --start switch.  This can be used in several ways:
+Start a game with the --start switch:
 
-	srcds.py --start
+	srcds.py --start [GAMETYPE|all] [INSTALLATION_NAME|all]
 
-If --start switch is used without any arguments, the script will prompt first for which SRCDS deployment
-to start a game from and then for which installed game to actually start.
+The script will prompt for any options not supplied with helpful
+hints depending on the verbosity level.
 
-	srcds.py --start cstrike
+Supplying GAMETYPE without supplying INSTALLATION_NAME will result
+in the script's prompting for the requested installation and listing
+the known deployments containing instances of the specified gametype.
 
-If a game-type argument is used, the script will prompt for which installed Counter-Strike (or whatever
-game-type is specified) should be started.
+Supplying INSTALLATION_NAME without supplying GAMETYPE will result
+in the script's prompting for the requested gametype and listing
+the installed gametype instances in the supplied deployment.
 
-	srcds.py --start srcds1
-	
-If a SRCDS deployment name argument is used, the script will prompt for which of the games installed
-into that deployment should be started.
-
-	srcds.py --start srcds1 cstrike
-
-If both SRCDS deployment name and game-type arguments are provided, the script will start the game
-installed into the provided deployment.
+Specifying all for either argument will result in the script's
+prompting for confirmation, listing all gametype instances that will
+be started.  
 
 ### Stop a Game
 
-To stop a game, use the --stop switch.  This can be used in several ways:
+Stop a game with the --stop switch:
 
-	srcds.py --stop
+	srcds.py --stop [GAMETYPE|all] [INSTALLATION_NAME|all]
+
+The arguments work in the same fashion as the --start arguments.
 
